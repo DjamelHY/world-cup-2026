@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #0a0e1a;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, #1a1f3a, #2d3561);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 3px solid #f4c430;
+}
+
+header h1 {
+    font-size: 2em;
+    color: #f4c430;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #aaa;
+    margin-bottom: 15px;
+}
+
+nav a {
+    color: #f4c430;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+.matches h2 {
+    color: #f4c430;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.match-card {
+    background: #1a1f3a;
+    border: 1px solid #2d3561;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: transform 0.2s;
+}
+
+.match-card:hover {
+    transform: translateY(-3px);
+    border-color: #f4c430;
+}
+
+.match-teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.team {
+    text-align: center;
+    flex: 1;
+}
+
+.team .flag {
+    font-size: 2.5em;
+}
+
+.team .name {
+    font-size: 0.9em;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+.vs {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #f4c430;
+    padding: 0 15px;
+}
+
+.match-date {
+    color: #888;
+    font-size: 0.85em;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.predict-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.predict-btns button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95em;
+    transition: all 0.2s;
+    background: #2d3561;
+    color: #ffffff;
+}
+
+.predict-btns button:hover {
+    background: #f4c430;
+    color: #0a0e1a;
+}
+
+.predict-btns button.selected {
+    background: #f4c430;
+    color: #0a0e1a;
+}
+
+.predict-btns button.draw {
+    flex: 0.6;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #555;
+    margin-top: 40px;
+    border-top: 1px solid #1a1f3a;
+}

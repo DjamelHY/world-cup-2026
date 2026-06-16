@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard — World Cup 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .leaderboard-table th {
+            background: #2d3561;
+            color: #f4c430;
+            padding: 12px;
+            text-align: left;
+        }
+        .leaderboard-table td {
+            padding: 12px;
+            border-bottom: 1px solid #2d3561;
+        }
+        .leaderboard-table tr:hover {
+            background: #1a1f3a;
+        }
+        .rank-1 { color: #f4c430; font-weight: bold; }
+        .rank-2 { color: #C0C0C0; font-weight: bold; }
+        .rank-3 { color: #CD7F32; font-weight: bold; }
+        .no-data {
+            text-align: center;
+            color: #888;
+            padding: 40px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #f4c430;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🏆 World Cup 2026 Predictor</h1>
+        <p>Predict matches & compete with fans worldwide!</p>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="leaderboard.html">Leaderboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <a href="index.html" class="back-btn">← Back to Matches</a>
+        <h2 style="color:#f4c430; margin-bottom:10px;">🥇 Top Predictors</h2>
+        <div id="leaderboard-container"></div>
+    </main>
+
+    <footer>
+        <p>World Cup 2026 — USA 🇺🇸 | Mexico 🇲🇽 | Canada 🇨🇦</p>
+    </footer>
+
+    <script>
+        const leaderboard = JSON.parse(localStorage.getItem('wc2026_leaderboard') || '{}');
+        const container = document.getElementById('leaderboard-container');
+        const players = Object.values(leaderboard);
+
+        if (players.length === 0) {
+            container.innerHTML = '<p class="no-data">No predictions yet — be the first! 🏆</p>';
+        } else {
+            players.sort((a, b) => b.points - a.points);
+            let html = '<table class="leaderboard-table"><thead><tr><th>Rank</th><th>Player</th><th>Points</th><th>Predictions</th></tr></thead><tbody>';
+            players.forEach((p, i) => {
+                const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
+                const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `#${i+1}`;
+                html += `<tr><td class="${rankClass}">${medal}</td><td>${p.name}</td><td class="${rankClass}">${p.points}</td><td>${p.predictions}</td></tr>`;
+            });
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
